@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>GLSL Hills</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Ropa+Sans");
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #eeeeee;
+    }
+
+    .p-summary {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      z-index: 2;
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+    }
+
+    .p-summary h1 {
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      margin: 0 0 0.5em;
+    }
+
+    .p-summary p {
+      letter-spacing: 0.2em;
+      margin: 0.2em 0;
+    }
+
+    .p-summary a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .p-canvas-webgl {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="p-summary">
+    <h1>GLSL Hills</h1>
+    <p><a href="http://www.tplh.net/">this source.</a></p>
+    <p id="datetime">Cargando fecha y hora...</p>
+  </div>
+
+  <canvas id="canvas-webgl" class="p-canvas-webgl"></canvas>
+
+  <!-- Incluye Three.js y jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Tu script principal -->
+  <script src="script.js"></script>
+
+  <!-- Bloque para mostrar fecha y hora -->
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const datetimeElement = document.getElementById("datetime");
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      datetimeElement.textContent = now.toLocaleString('es-AR', options);
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script>
+</body>
+</html>
