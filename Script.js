@@ -61,7 +61,7 @@ const render = () => {
 };
 const renderLoop = () => {
   render();
-//   requestAnimationFrame(renderLoop);
+  //requestAnimationFrame(renderLoop);
 };
 
 const init = () => {
